@@ -1,3 +1,16 @@
 # ninja log v6
 7	404	7832816344669412	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
 406	525	7832816348664054	dstr_assignment_pt2.exe	cbb0af2cdaa22c17
+30	519	7833405939151047	CMakeFiles/dstr_assignment_pt2.dir/main.cpp.obj	21be7e578abf1270
+15	594	7833405939007598	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+594	727	7833405944799233	dstr_assignment_pt2.exe	5fa120fc685cd82c
+9	485	7833406257987322	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+486	599	7833406262748444	dstr_assignment_pt2.exe	5fa120fc685cd82c
+11	510	7833415752926552	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+510	649	7833415757919394	dstr_assignment_pt2.exe	5fa120fc685cd82c
+10	467	7833417195304486	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+467	589	7833417199877257	dstr_assignment_pt2.exe	5fa120fc685cd82c
+14	485	7833418148766356	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+486	604	7833418153480901	dstr_assignment_pt2.exe	5fa120fc685cd82c
+11	471	7833418334915146	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+472	586	7833418339524171	dstr_assignment_pt2.exe	5fa120fc685cd82c

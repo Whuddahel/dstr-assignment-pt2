@@ -16,7 +16,7 @@ struct BasicStackNode
 };
 
 template<typename GenericData>
-class Stack
+class BasicStack
 {
     public:
     BasicStackNode<GenericData> *topOfTheStack = nullptr;
@@ -71,9 +71,6 @@ class Stack
         BasicStackNode<GenericData> *nodeToBePrinted;
         if (!isEmpty())
         {
-            cout << endl
-                 << "Stack elements [LIFO] = ";
-
             nodeToBePrinted = topOfTheStack;
             while (nodeToBePrinted != nullptr)
             {
@@ -117,20 +114,27 @@ public:
 
     bool isEmpty()
     {
-        return topOfTheStack == nullptr;
+        if(topOfTheStack == nullptr)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    // Return a copy of the top node’s data (type, quantity, batch)
+
     StackNode peek()
     {
-        if (isEmpty())
+        if(isEmpty())
         {
             throw runtime_error("Stack is empty");
         }
         return *topOfTheStack;
     }
 
-    // Push new node onto the stack
+
     void push(string type, string quantity, string batch)
     {
         StackNode *newNode = new StackNode;
@@ -142,10 +146,10 @@ public:
         size++;
     }
 
-    // Pop top node off the stack and return its data
+
     StackNode pop()
     {
-        if (isEmpty())
+        if(isEmpty())
         {
             throw runtime_error("Stack is empty");
         }
@@ -157,35 +161,15 @@ public:
         delete nodeToBeDeleted;
         size--;
 
+        dataToReturn.next = nullptr;
         return dataToReturn;
     }
 
-    // Print all nodes
-    void print()
-    {
-        if (isEmpty())
-        {
-            cout << "Stack is empty!" << endl;
-            return;
-        }
 
-        cout << "\nStack elements [LIFO]:\n";
-        StackNode *current = topOfTheStack;
-        while (current != nullptr)
-        {
-            cout << "Type: " << current->type
-                 << ", Quantity: " << current->quantity
-                 << ", Batch: " << current->batch << endl;
-            current = current->next;
-        }
-        cout << endl;
-    }
-
-    // Delete all nodes
     void destroy()
     {
         StackNode *nodeToBeDeleted;
-        while (topOfTheStack != nullptr)
+        while(topOfTheStack != nullptr)
         {
             nodeToBeDeleted = topOfTheStack;
             topOfTheStack = topOfTheStack->next;

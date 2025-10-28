@@ -3,13 +3,17 @@
 //
 #include <iostream>
 #include "linkedlist.hpp"
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-string *extractItemsFile(BasicStackNode<> headPointer, string filepath)
+BasicStack<string> listOfItems;
+Stack listOfSplittedItems;
+
+BasicStack<string> extractItemsFile(BasicStack<string> &headPointer, string filepath)
 {
     string buffer;
-    int count = 0;
     bool ignoreFirst = false;
 
     ifstream fileContents(filepath);
@@ -17,21 +21,90 @@ string *extractItemsFile(BasicStackNode<> headPointer, string filepath)
     {
         if(ignoreFirst == true)
         {
-            buffer = trimCsvContents(buffer);
-            filteredFileContents[count] = buffer;
-            count = count + 1;
+            headPointer.push(buffer);
         }
         ignoreFirst = true;
     }
     fileContents.close();
-    return filteredFileContents;
+    return headPointer;
+}
+
+string* split(string& inputText, string outputText[], char delimiter)
+{
+    int index = 0;
+    string buffer = "";
+
+    for(char character : inputText)
+    {
+        if(character == delimiter)
+        {
+            outputText[index] = buffer;
+            index = index + 1;
+            buffer = "";
+        }
+        else
+        {
+            buffer = buffer + character;
+        }
+    }
+
+    outputText[index] = buffer;
+    return outputText;
+}
+
+void listItems()
+{
+    cout << "Type                                                   Quantity       Batch" << endl;
+    Stack listOfSplittedItemsHolder;
+    while(!listOfSplittedItems.isEmpty())
+    {
+        StackNode buffer = listOfSplittedItems.pop();
+
+        cout << buffer.type;
+        for(int i = (55 - buffer.type.length()); i > 0; i--)
+        {
+            cout << " ";
+        }
+
+        cout << buffer.quantity;
+        for(int i = (15 - buffer.quantity.length()); i > 0; i--)
+        {
+            cout << " ";
+        }
+
+        cout << buffer.batch << endl;
+
+        listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
+    }
+
+    while(listOfSplittedItemsHolder.isEmpty() == false)
+    {
+        StackNode buffer = listOfSplittedItemsHolder.pop();
+        listOfSplittedItems.push(buffer.type, buffer.quantity, buffer.batch);
+    }
 }
 
 void runMedicalSupplyManager()
 {
+    listOfItems = extractItemsFile(listOfItems, "items.csv");
+
+    listOfItems.print();
+
+    while(listOfItems.isEmpty() == false)
+    {
+        string bufferToBeSplit = listOfItems.pop();
+        string bufferToContainSplit[3] = {""};
+        split(bufferToBeSplit, bufferToContainSplit, ',');
+
+        bufferToContainSplit[1].erase(0, 1);
+        bufferToContainSplit[2].erase(0, 1);
+
+        listOfSplittedItems.push(bufferToContainSplit[0], bufferToContainSplit[1], bufferToContainSplit[2]);
+    }
+
     while(true)
     {
-        cout << "Medical Supply Manager\n1.Add an item\n2. Withdraw an item\n3. List Items\n4. Exit\nPlease select an option: " << endl;
+        cout << "Medical Supply Manager\n1.Add an item\n2. Withdraw an item\n3. List Items\n4. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
         if(cin.fail())
@@ -52,7 +125,7 @@ void runMedicalSupplyManager()
         }
         else if(choice == 3)
         {
-            cout << "listItems" << endl;
+            listItems();
         }
         else if(choice == 4)
         {
