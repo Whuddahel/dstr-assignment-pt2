@@ -6,8 +6,8 @@
 
 using namespace std;
 
-
-
+//-------------------------------------------------------------------
+//Matthew - I need this dont remove it-------------------------------
 template<typename GenericData>
 struct BasicStackNode
 {
@@ -178,6 +178,9 @@ public:
         size = 0;
     }
 };
+//Matthew - I need this dont remove it-------------------------------
+//-------------------------------------------------------------------
+
 
 struct resumeNode {
     int resumeID;
