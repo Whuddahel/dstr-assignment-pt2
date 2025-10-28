@@ -1,2 +1,11 @@
 type, quantity, batch
-Healthcare, 10, 48
+Surgical Mask, 250, B0001
+Hand Sanitizer, 180, B0001
+Antibiotic, 95, B0001
+Disposable Gloves, 400, B0002
+IV Drip Set, 70, B0002
+Oxygen Cylinder, 20, B0002
+Bandage Roll, 300, B0003
+Painkiller, 150, B0003
+Syringe, 500, B0003
+Thermometer, 45, B0003

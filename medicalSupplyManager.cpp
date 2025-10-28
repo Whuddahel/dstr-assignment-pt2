@@ -54,23 +54,26 @@ string* split(string& inputText, string outputText[], char delimiter)
 
 void listItems()
 {
-    cout << "Type                                                   Quantity       Batch" << endl;
+    cout << endl;
+    cout << "Type                                                |  Quantity    |  Batch" << endl;
     Stack listOfSplittedItemsHolder;
     while(!listOfSplittedItems.isEmpty())
     {
         StackNode buffer = listOfSplittedItems.pop();
 
         cout << buffer.type;
-        for(int i = (55 - buffer.type.length()); i > 0; i--)
+        for(int i = (52 - buffer.type.length()); i > 0; i--)
         {
             cout << " ";
         }
+        cout << "|  ";
 
         cout << buffer.quantity;
-        for(int i = (15 - buffer.quantity.length()); i > 0; i--)
+        for(int i = (12 - buffer.quantity.length()); i > 0; i--)
         {
             cout << " ";
         }
+        cout << "|  ";
 
         cout << buffer.batch << endl;
 
@@ -88,7 +91,7 @@ void runMedicalSupplyManager()
 {
     listOfItems = extractItemsFile(listOfItems, "items.csv");
 
-    listOfItems.print();
+    // listOfItems.print();
 
     while(listOfItems.isEmpty() == false)
     {
