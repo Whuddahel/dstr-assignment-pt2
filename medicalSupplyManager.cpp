@@ -119,7 +119,7 @@ void addItem()
     cin >> inputBuffer[0];
     cout << "Enter Quantity: ";
     cin >> inputBuffer[1];
-    cout << "Enter Batch Size: ";
+    cout << "Enter Batch No.: ";
     cin >> inputBuffer[2];
 
     listOfSplittedItems.push(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
