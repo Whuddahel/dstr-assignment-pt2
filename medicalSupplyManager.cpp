@@ -2,8 +2,30 @@
 // Created by BanEdward on 27/10/2025.
 //
 #include <iostream>
+#include "linkedlist.hpp"
 
 using namespace std;
+
+string *extractItemsFile(BasicStackNode<> headPointer, string filepath)
+{
+    string buffer;
+    int count = 0;
+    bool ignoreFirst = false;
+
+    ifstream fileContents(filepath);
+    while (getline(fileContents, buffer))
+    {
+        if(ignoreFirst == true)
+        {
+            buffer = trimCsvContents(buffer);
+            filteredFileContents[count] = buffer;
+            count = count + 1;
+        }
+        ignoreFirst = true;
+    }
+    fileContents.close();
+    return filteredFileContents;
+}
 
 void runMedicalSupplyManager()
 {

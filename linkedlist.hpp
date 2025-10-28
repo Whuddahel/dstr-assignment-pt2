@@ -6,48 +6,20 @@
 
 using namespace std;
 
+
+
 template<typename GenericData>
-struct Node
+struct BasicStackNode
 {
     GenericData data;
-    Node *next;
-};
-
-template<typename GenericData>
-class LinkedList
-{
-public:
-    Node<GenericData> *head;
-    int size;
-
-    LinkedList()
-    {
-        size = 0;
-        head = nullptr;
-    }
-
-    insertAtBeginning(GenericData data)
-    {
-        Node<GenericData> *newNode = new Node<GenericData>;
-        newNode->data = data;
-        newNode->next = head;
-        head = newNode;
-        size++;
-    }
-};
-
-template<typename GenericData>
-struct StackNode
-{
-    GenericData data;
-    StackNode *next;
+    BasicStackNode *next;
 };
 
 template<typename GenericData>
 class Stack
 {
     public:
-    StackNode<GenericData> *topOfTheStack = nullptr;
+    BasicStackNode<GenericData> *topOfTheStack = nullptr;
     int size = 0;
 
     bool isEmpty()
@@ -73,7 +45,7 @@ class Stack
 
     void push(GenericData data)
     {
-        StackNode<GenericData> *newNode = new StackNode<GenericData>;
+        BasicStackNode<GenericData> *newNode = new BasicStackNode<GenericData>;
         newNode->data = data;
         newNode->next = topOfTheStack;
         topOfTheStack = newNode;
@@ -82,7 +54,7 @@ class Stack
 
     GenericData pop()
     {
-        StackNode<GenericData> *nodeToBeDeletedBuffer = topOfTheStack;
+        BasicStackNode<GenericData> *nodeToBeDeletedBuffer = topOfTheStack;
         if(isEmpty())
         {
             throw runtime_error("Stack is empty");
@@ -96,7 +68,7 @@ class Stack
 
     void print()
     {
-        StackNode<GenericData> *nodeToBePrinted;
+        BasicStackNode<GenericData> *nodeToBePrinted;
         if (!isEmpty())
         {
             cout << endl
@@ -118,8 +90,102 @@ class Stack
 
     void destroy()
     {
-        StackNode<GenericData> *nodeToBeDeleted;
+        BasicStackNode<GenericData> *nodeToBeDeleted;
         while(topOfTheStack != nullptr)
+        {
+            nodeToBeDeleted = topOfTheStack;
+            topOfTheStack = topOfTheStack->next;
+            delete nodeToBeDeleted;
+        }
+        size = 0;
+    }
+};
+
+struct StackNode
+{
+    string type;
+    string quantity;
+    string batch;
+    StackNode *next;
+};
+
+class Stack
+{
+public:
+    StackNode *topOfTheStack = nullptr;
+    int size = 0;
+
+    bool isEmpty()
+    {
+        return topOfTheStack == nullptr;
+    }
+
+    // Return a copy of the top node’s data (type, quantity, batch)
+    StackNode peek()
+    {
+        if (isEmpty())
+        {
+            throw runtime_error("Stack is empty");
+        }
+        return *topOfTheStack;
+    }
+
+    // Push new node onto the stack
+    void push(string type, string quantity, string batch)
+    {
+        StackNode *newNode = new StackNode;
+        newNode->type = type;
+        newNode->quantity = quantity;
+        newNode->batch = batch;
+        newNode->next = topOfTheStack;
+        topOfTheStack = newNode;
+        size++;
+    }
+
+    // Pop top node off the stack and return its data
+    StackNode pop()
+    {
+        if (isEmpty())
+        {
+            throw runtime_error("Stack is empty");
+        }
+
+        StackNode *nodeToBeDeleted = topOfTheStack;
+        StackNode dataToReturn = *nodeToBeDeleted;
+
+        topOfTheStack = nodeToBeDeleted->next;
+        delete nodeToBeDeleted;
+        size--;
+
+        return dataToReturn;
+    }
+
+    // Print all nodes
+    void print()
+    {
+        if (isEmpty())
+        {
+            cout << "Stack is empty!" << endl;
+            return;
+        }
+
+        cout << "\nStack elements [LIFO]:\n";
+        StackNode *current = topOfTheStack;
+        while (current != nullptr)
+        {
+            cout << "Type: " << current->type
+                 << ", Quantity: " << current->quantity
+                 << ", Batch: " << current->batch << endl;
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+    // Delete all nodes
+    void destroy()
+    {
+        StackNode *nodeToBeDeleted;
+        while (topOfTheStack != nullptr)
         {
             nodeToBeDeleted = topOfTheStack;
             topOfTheStack = topOfTheStack->next;
