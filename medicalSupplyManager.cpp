@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main()
+void runMedicalSupplyManager()
 {
     cout << "Test" << endl;
 }
