@@ -20,9 +20,26 @@ void runMedicalSupplyManager()
             continue;
         }
 
-        if(choice == 2)
+        if(choice == 1)
         {
-            cout << "test" << endl;
+            cout << "enter" << endl;
+        }
+        else if(choice == 2)
+        {
+            cout << "withdraw" << endl;
+        }
+        else if(choice == 3)
+        {
+            cout << "listItems" << endl;
+        }
+        else if(choice == 4)
+        {
+            cout << "Exit back to main menu" << endl;
+            break;
+        }
+        else
+        {
+            cout << "Wrong input" << endl;
         }
     }
 }

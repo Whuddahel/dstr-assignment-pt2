@@ -115,6 +115,18 @@ class Stack
             cout << "Stack is empty!" << endl;
         }
     }
+
+    void destroy()
+    {
+        StackNode<GenericData> *nodeToBeDeleted;
+        while(topOfTheStack != nullptr)
+        {
+            nodeToBeDeleted = topOfTheStack;
+            topOfTheStack = topOfTheStack->next;
+            delete nodeToBeDeleted;
+        }
+        size = 0;
+    }
 };
 
 struct resumeNode {
