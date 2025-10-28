@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(dstr_assignment_pt2
     medicalSupplyManager.cpp
-        main.cpp)
+        main.cpp
+        linkedlist.hpp)

@@ -6,6 +6,117 @@
 
 using namespace std;
 
+template<typename GenericData>
+struct Node
+{
+    GenericData data;
+    Node *next;
+};
+
+template<typename GenericData>
+class LinkedList
+{
+public:
+    Node<GenericData> *head;
+    int size;
+
+    LinkedList()
+    {
+        size = 0;
+        head = nullptr;
+    }
+
+    insertAtBeginning(GenericData data)
+    {
+        Node<GenericData> *newNode = new Node<GenericData>;
+        newNode->data = data;
+        newNode->next = head;
+        head = newNode;
+        size++;
+    }
+};
+
+template<typename GenericData>
+struct StackNode
+{
+    GenericData data;
+    StackNode *next;
+};
+
+template<typename GenericData>
+class Stack
+{
+    public:
+    StackNode<GenericData> *topOfTheStack = nullptr;
+    int size = 0;
+
+    bool isEmpty()
+    {
+        if(topOfTheStack == nullptr)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    GenericData peek()
+    {
+        if(isEmpty())
+        {
+            throw runtime_error("Stack is empty");
+        }
+        return topOfTheStack->data;
+    }
+
+    void push(GenericData data)
+    {
+        StackNode<GenericData> *newNode = new StackNode<GenericData>;
+        newNode->data = data;
+        newNode->next = topOfTheStack;
+        topOfTheStack = newNode;
+        size++;
+    }
+
+    GenericData pop()
+    {
+        StackNode<GenericData> *nodeToBeDeletedBuffer = topOfTheStack;
+        if(isEmpty())
+        {
+            throw runtime_error("Stack is empty");
+        }
+        GenericData dataToBeDeletedBuffer = nodeToBeDeletedBuffer->data;
+        topOfTheStack = nodeToBeDeletedBuffer->next;
+        delete nodeToBeDeletedBuffer;
+        size--;
+        return dataToBeDeletedBuffer;
+    }
+
+    void print()
+    {
+        StackNode<GenericData> *nodeToBePrinted;
+        if (!isEmpty())
+        {
+            cout << endl
+                 << "Stack elements [LIFO] = ";
+
+            nodeToBePrinted = topOfTheStack;
+            while (nodeToBePrinted != nullptr)
+            {
+                cout << nodeToBePrinted->data << " ";
+                nodeToBePrinted = nodeToBePrinted->next;
+            }
+            cout << endl;
+        }
+        else
+        {
+            cout << "Stack is empty!" << endl;
+        }
+    }
+};
+
 struct resumeNode {
     int resumeID;
     string skills;
