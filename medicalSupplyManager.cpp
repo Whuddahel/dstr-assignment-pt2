@@ -10,6 +10,7 @@ using namespace std;
 
 BasicStack<string> listOfItems;
 Stack listOfSplittedItems;
+Stack listOfSplittedItemsHolder;
 
 BasicStack<string> extractItemsFile(BasicStack<string> &headPointer, string filepath)
 {
@@ -52,11 +53,35 @@ string* split(string& inputText, string outputText[], char delimiter)
     return outputText;
 }
 
+void loadFileSequence()
+{
+    listOfItems.destroy();
+    listOfSplittedItems.destroy();
+    listOfSplittedItemsHolder.destroy();
+
+
+    listOfItems = extractItemsFile(listOfItems, "items.csv");
+
+    // listOfItems.print();
+
+    while(listOfItems.isEmpty() == false)
+    {
+        string bufferToBeSplit = listOfItems.pop();
+        string bufferToContainSplit[3] = {""};
+        split(bufferToBeSplit, bufferToContainSplit, ',');
+
+        bufferToContainSplit[1].erase(0, 1);
+        bufferToContainSplit[2].erase(0, 1);
+
+        listOfSplittedItems.push(bufferToContainSplit[0], bufferToContainSplit[1], bufferToContainSplit[2]);
+    }
+}
+
 void listItems()
 {
     cout << endl;
     cout << "Type                                                |  Quantity    |  Batch" << endl;
-    Stack listOfSplittedItemsHolder;
+
     while(!listOfSplittedItems.isEmpty())
     {
         StackNode buffer = listOfSplittedItems.pop();
@@ -87,23 +112,47 @@ void listItems()
     }
 }
 
+void addItem()
+{
+    string inputBuffer[3] = {""};
+    cout << "Enter Item Type: ";
+    cin >> inputBuffer[0];
+    cout << "Enter Quantity: ";
+    cin >> inputBuffer[1];
+    cout << "Enter Batch Size: ";
+    cin >> inputBuffer[2];
+
+    listOfSplittedItems.push(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
+    ofstream fileContents("items.csv", ios::app); //append mode
+    fileContents << inputBuffer[0] << ", " << inputBuffer[1] << ", " << inputBuffer[2] << endl;
+    fileContents.close();
+
+    loadFileSequence();
+
+    // while(listOfSplittedItems.isEmpty() == false) //flip around
+    // {
+    //     StackNode buffer = listOfSplittedItems.pop();
+    //     listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
+    // }
+    //
+    // while(listOfSplittedItemsHolder.isEmpty() == false)
+    // {
+    //     StackNode buffer = listOfSplittedItemsHolder.pop();
+    //     listOfSplittedItems.push(buffer.type, buffer.quantity, buffer.batch);
+    //     buffer
+    // }
+    // ofstream fileContents("keywords.csv", ios::app); //append mode
+    // fileContents.close();
+}
+
+void retrieveItem()
+{
+
+}
+
 void runMedicalSupplyManager()
 {
-    listOfItems = extractItemsFile(listOfItems, "items.csv");
-
-    // listOfItems.print();
-
-    while(listOfItems.isEmpty() == false)
-    {
-        string bufferToBeSplit = listOfItems.pop();
-        string bufferToContainSplit[3] = {""};
-        split(bufferToBeSplit, bufferToContainSplit, ',');
-
-        bufferToContainSplit[1].erase(0, 1);
-        bufferToContainSplit[2].erase(0, 1);
-
-        listOfSplittedItems.push(bufferToContainSplit[0], bufferToContainSplit[1], bufferToContainSplit[2]);
-    }
+    loadFileSequence();
 
     while(true)
     {
@@ -120,7 +169,7 @@ void runMedicalSupplyManager()
 
         if(choice == 1)
         {
-            cout << "enter" << endl;
+            addItem();
         }
         else if(choice == 2)
         {
