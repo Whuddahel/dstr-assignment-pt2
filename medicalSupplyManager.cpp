@@ -129,25 +129,31 @@ void addItem()
 
     loadFileSequence();
 
-    // while(listOfSplittedItems.isEmpty() == false) //flip around
-    // {
-    //     StackNode buffer = listOfSplittedItems.pop();
-    //     listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
-    // }
-    //
-    // while(listOfSplittedItemsHolder.isEmpty() == false)
-    // {
-    //     StackNode buffer = listOfSplittedItemsHolder.pop();
-    //     listOfSplittedItems.push(buffer.type, buffer.quantity, buffer.batch);
-    //     buffer
-    // }
-    // ofstream fileContents("keywords.csv", ios::app); //append mode
-    // fileContents.close();
 }
 
 void retrieveItem()
 {
+    StackNode lastRetrievedItem = listOfSplittedItems.pop();
+    cout << "Retrieved " << lastRetrievedItem.quantity << "x " << lastRetrievedItem.type << " from batch " << lastRetrievedItem.batch << endl;
 
+    while(listOfSplittedItems.isEmpty() == false) //flip around
+    {
+        StackNode buffer = listOfSplittedItems.pop();
+        listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
+    }
+
+    ofstream fileContents("items.csv");
+    fileContents << "type, quantity, batch" << endl;
+    while(listOfSplittedItemsHolder.isEmpty() == false)
+    {
+        StackNode buffer = listOfSplittedItemsHolder.pop();
+        listOfSplittedItems.push(buffer.type, buffer.quantity, buffer.batch);
+
+        fileContents << buffer.type << ", " << buffer.quantity << ", " << buffer.batch << endl;
+    }
+    fileContents.close();
+
+    loadFileSequence();
 }
 
 void runMedicalSupplyManager()
@@ -173,7 +179,7 @@ void runMedicalSupplyManager()
         }
         else if(choice == 2)
         {
-            cout << "withdraw" << endl;
+           retrieveItem();
         }
         else if(choice == 3)
         {
