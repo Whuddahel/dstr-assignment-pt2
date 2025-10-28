@@ -11,6 +11,7 @@ using namespace std;
 BasicStack<string> listOfItems;
 Stack listOfSplittedItems;
 Stack listOfSplittedItemsHolder;
+Stack listOfSplittedItemsFlipper;
 
 BasicStack<string> extractItemsFile(BasicStack<string> &headPointer, string filepath)
 {
@@ -133,21 +134,28 @@ void addItem()
 
 void retrieveItem()
 {
-    StackNode lastRetrievedItem = listOfSplittedItems.pop();
-    cout << "Retrieved " << lastRetrievedItem.quantity << "x " << lastRetrievedItem.type << " from batch " << lastRetrievedItem.batch << endl;
+    ofstream fileContents("items.csv");
+    fileContents << "type, quantity, batch" << endl;
 
-    while(listOfSplittedItems.isEmpty() == false) //flip around
+    while(listOfSplittedItems.isEmpty() == false)
     {
         StackNode buffer = listOfSplittedItems.pop();
         listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
     }
 
-    ofstream fileContents("items.csv");
-    fileContents << "type, quantity, batch" << endl;
+    StackNode lastRetrievedItem = listOfSplittedItemsHolder.pop();
+    cout << "Retrieved " << lastRetrievedItem.quantity << "x " << lastRetrievedItem.type << " from batch " << lastRetrievedItem.batch << endl;
+
     while(listOfSplittedItemsHolder.isEmpty() == false)
     {
         StackNode buffer = listOfSplittedItemsHolder.pop();
         listOfSplittedItems.push(buffer.type, buffer.quantity, buffer.batch);
+    }
+
+    while(listOfSplittedItems.isEmpty() == false)
+    {
+        StackNode buffer = listOfSplittedItems.pop();
+        // listOfSplittedItemsHolder.push(buffer.type, buffer.quantity, buffer.batch);
 
         fileContents << buffer.type << ", " << buffer.quantity << ", " << buffer.batch << endl;
     }
