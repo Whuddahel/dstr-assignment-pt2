@@ -13,7 +13,7 @@ int main()
 {
     while(true)
     {
-        cout << "Welcome to sohai jason hospital app!\n1.Patient stuff\n2. Medical Supply Manager\n3. I forgot\n4. Ambulance\n5. Exit\nPlease select an option: " << endl;
+        cout << "Welcome to sohai jason hospital app!\n1.Patient stuff\n2. Medical Supply Manager\n3. I forgot\n4. Ambulance\n5. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
         if(cin.fail())

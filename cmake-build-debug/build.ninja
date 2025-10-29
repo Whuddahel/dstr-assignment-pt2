@@ -57,6 +57,14 @@ build CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj: CXX_COMPI
   TARGET_COMPILE_PDB = CMakeFiles\dstr_assignment_pt2.dir\
   TARGET_PDB = dstr_assignment_pt2.pdb
 
+build CMakeFiles/dstr_assignment_pt2.dir/main.cpp.obj: CXX_COMPILER__dstr_assignment_pt2_unscanned_Debug C$:/Users/User/CLionProjects/dstr-assignment-pt2/main.cpp || cmake_object_order_depends_target_dstr_assignment_pt2
+  DEP_FILE = CMakeFiles\dstr_assignment_pt2.dir\main.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\dstr_assignment_pt2.dir
+  OBJECT_FILE_DIR = CMakeFiles\dstr_assignment_pt2.dir
+  TARGET_COMPILE_PDB = CMakeFiles\dstr_assignment_pt2.dir\
+  TARGET_PDB = dstr_assignment_pt2.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target dstr_assignment_pt2
@@ -65,7 +73,7 @@ build CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj: CXX_COMPI
 #############################################
 # Link the executable dstr_assignment_pt2.exe
 
-build dstr_assignment_pt2.exe: CXX_EXECUTABLE_LINKER__dstr_assignment_pt2_Debug CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj
+build dstr_assignment_pt2.exe: CXX_EXECUTABLE_LINKER__dstr_assignment_pt2_Debug CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj CMakeFiles/dstr_assignment_pt2.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\dstr_assignment_pt2.dir
