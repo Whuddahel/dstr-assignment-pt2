@@ -271,7 +271,8 @@ CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj: C:/Users/crypt/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/time.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
-  C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/wctype.h
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
+  C:/Users/crypt/CLionProjects/dstr-assignment-pt2/linkedlist.hpp
 
 
 C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h:
@@ -545,3 +546,5 @@ C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/inclu
 C:/Program\ Files/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/wctype.h:
 
 C:/Users/crypt/CLionProjects/dstr-assignment-pt2/medicalSupplyManager.cpp:
+
+C:/Users/crypt/CLionProjects/dstr-assignment-pt2/linkedlist.hpp:
