@@ -1,3 +1,0 @@
-C:/Users/User/CLionProjects/dstr-assignment-pt2/cmake-build-debug/CMakeFiles/dstr_assignment_pt2.dir
-C:/Users/User/CLionProjects/dstr-assignment-pt2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/CLionProjects/dstr-assignment-pt2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
