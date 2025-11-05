@@ -36,7 +36,7 @@ private:
     }
 
     void heapifyUp(int index) // IDK why its called this but everyone uses this name
-    { // Repeatedly compare and swap with parent until parent value is less than or equal to current value
+    {                         // Repeatedly compare and swap with parent until parent value is less than or equal to current value
         while (index != 0 && heap[parent(index)] < heap[index])
         {
             swap(index, parent(index));
@@ -76,7 +76,7 @@ public:
     ~PriorityQueue()
     {
         delete[] heap;
-    } 
+    }
 
     // MEMBER FUNCTIONS
     bool isEmpty()
@@ -109,20 +109,26 @@ public:
         return root;
     }
 
-    // void display()
-    // {
-    //     if (isEmpty())
-    //     {
-    //         cout << "Priority Queue is empty!" << endl;
-    //         return;
-    //     }
+    void clear()
+    {
+        size = 0;
+    }
 
-    //     for (int i = 0; i < size; i++)
-    //     {
-    //         cout << heap[i] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    void display()
+    {
+        if (isEmpty())
+        {
+            cout << "Priority Queue is empty!" << endl;
+            return;
+        }
+
+        cout << endl;
+        for (int i = 0; i < size; i++)
+        {
+            cout << heap[i] << endl;
+        }
+        cout << endl;
+    }
 };
 
 #endif

@@ -1,6 +1,7 @@
 //
 // Created by BanEdward on 28/10/2025.
 //
+// #include "EmergencyDepartmentOfficer.hpp"
 
 #include <iostream>
 
@@ -33,7 +34,7 @@ int main()
             runMedicalSupplyManager();
             break;
         case 3:
-            cout << "Missing feature..." << endl;
+            runEmergencyDepartmentOfficer();
             break;
         case 4:
             cout << "Missing feature..." << endl;

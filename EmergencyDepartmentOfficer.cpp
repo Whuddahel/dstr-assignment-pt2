@@ -13,6 +13,7 @@ PriorityQueue<EmergencyCase> emergencyQueue(50);
 
 void loadEmergencyCases()
 {
+    emergencyQueue.clear();
     ifstream file(FILE_NAME); // Input file stream, read-only mode
     if (!file.is_open())
     {
@@ -25,6 +26,10 @@ void loadEmergencyCases()
 
     while (getline(file, buffer))
     {
+        if (buffer.empty())
+        {
+            continue;
+        }
         stringstream ss(buffer);
         string priorityStr;
         EmergencyCase caseEntry;
@@ -43,6 +48,7 @@ void loadEmergencyCases()
 void logEmergencyCase()
 {
     EmergencyCase newCase;
+
     cout << "Enter Patient Name: ";
     getline(cin, newCase.name);
     if (newCase.name.find(',') != string::npos)
@@ -83,6 +89,31 @@ void processCase()
     }
     EmergencyCase nextCase = emergencyQueue.pop();
     cout << "Processing case: " << nextCase << endl;
+
+    ifstream inFile(FILE_NAME);
+    ofstream tempFile("temp.csv");
+    string buffer;
+
+    while (getline(inFile, buffer))
+    {
+        // build what this case would look like in the file
+        string currentLine = nextCase.name + "," + nextCase.emergType + "," + to_string(nextCase.priority);
+
+        // if line matches the processed case, skip it
+        if (buffer == currentLine)
+            continue;
+
+        tempFile << buffer << "\n";
+    }
+
+    inFile.close();
+    tempFile.close();
+
+    // replace the old file
+    remove(FILE_NAME.c_str());
+    rename("temp.csv", FILE_NAME.c_str());
+
+    cout << "Case removed from CSV.\n";
 }
 
 void viewPendingCases()
@@ -92,28 +123,29 @@ void viewPendingCases()
         cout << "No pending emergency cases." << endl;
         return;
     }
-
+    emergencyQueue.display();
     // Create a temporary copy of the priority queue to display cases without modifying the original
-    PriorityQueue<EmergencyCase> tempQueue = emergencyQueue;
-    cout << "Pending Emergency Cases (Ordered by Priority):" << endl;
-
-    int count = 1;
-    while (!tempQueue.isEmpty())
-    {
-        EmergencyCase caseEntry = tempQueue.pop();
-        cout << count << ". " << caseEntry << endl;
-        count++;
-    }
+    // PriorityQueue<EmergencyCase> tempQueue = emergencyQueue;
+    // cout << "Pending Emergency Cases (Ordered by Priority):" << endl;
+    // tempQueue.display();
+    // int count = 1;
+    // while (!tempQueue.isEmpty())
+    // {
+    //     EmergencyCase caseEntry = tempQueue.pop();
+    //     cout << count << ". " << caseEntry << endl;
+    //     count++;
+    // }
 }
 void runEmergencyDepartmentOfficer()
 {
+    loadEmergencyCases();
     while (true)
     {
-        loadEmergencyCases();
-
+        // emergencyQueue.display();
         cout << "[Emergency Department Officer Menu]\n1. Log Emergency Case\n2. Process Most Critical Case\n3. View Pending Cases (Order by Priority)\n4. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
+        cin.ignore(10000, '\n');
 
         switch (choice)
         {
@@ -124,7 +156,7 @@ void runEmergencyDepartmentOfficer()
             processCase();
             break;
         case 3:
-            cout << "Missing feature..." << endl;
+            viewPendingCases();
             break;
         case 4:
             cout << "Thank you for using this program!" << endl;
