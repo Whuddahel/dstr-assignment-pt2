@@ -24,18 +24,41 @@ int main()
             continue;
         }
 
-        if(choice == 2)
+        switch (choice)
         {
+        case 1:
+            cout << "Missing feature..." << endl;
+            break;
+        case 2:
             runMedicalSupplyManager();
-        }
-        else if(choice == 5)
-        {
+            break;
+        case 3:
+            cout << "Missing feature..." << endl;       
+            break;        
+        case 4:
+            cout << "Missing feature..." << endl;
+            break;
+        case 5:
             cout << "Thank you for using this program!" << endl;
+            return 0;
+            break;
+        default:
+            cout << "Invalid option. Please try again." << endl;
             break;
         }
-        else
-        {
-            cout << "Missing feature..." << endl;
-        }
+
+        // if(choice == 2)
+        // {
+        //     runMedicalSupplyManager();
+        // }
+        // else if(choice == 5)
+        // {
+        //     cout << "Thank you for using this program!" << endl;
+        //     break;
+        // }
+        // else
+        // {
+        //     cout << "Missing feature..." << endl;
+        // }
     }
 }
