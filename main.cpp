@@ -4,19 +4,19 @@
 
 #include <iostream>
 
-
 using namespace std;
 
 void runMedicalSupplyManager();
+void runEmergencyDepartmentOfficer();
 
 int main()
 {
-    while(true)
+    while (true)
     {
-        cout << "Welcome to sohai jason hospital app!\n1. Patient stuff\n2. Medical Supply Manager\n3. I forgot\n4. Ambulance\n5. Exit\nPlease select an option: ";
+        cout << "Welcome to sohai jason hospital app!\n1. Patient stuff\n2. Medical Supply Manager\n3. Emergency Department Officer\n4. Ambulance\n5. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
-        if(cin.fail())
+        if (cin.fail())
         {
             cin.clear();
             cin.ignore(10000, '\n');
@@ -33,8 +33,8 @@ int main()
             runMedicalSupplyManager();
             break;
         case 3:
-            cout << "Missing feature..." << endl;       
-            break;        
+            cout << "Missing feature..." << endl;
+            break;
         case 4:
             cout << "Missing feature..." << endl;
             break;
