@@ -109,25 +109,19 @@ public:
         return root;
     }
 
+    T getElementAt(int index)
+    {
+        if (index < 0 || index >= size)
+        {
+            // throw out_of_range("Requested index out of range");
+            return T();
+        }
+        return heap[index];
+    }
+
     void clear()
     {
         size = 0;
-    }
-
-    void display()
-    {
-        if (isEmpty())
-        {
-            cout << "Priority Queue is empty!" << endl;
-            return;
-        }
-
-        cout << endl;
-        for (int i = 0; i < size; i++)
-        {
-            cout << heap[i] << endl;
-        }
-        cout << endl;
     }
 };
 

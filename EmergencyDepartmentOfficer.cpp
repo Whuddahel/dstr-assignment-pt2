@@ -9,11 +9,11 @@
 #include <string>
 using namespace std;
 string FILE_NAME = "emergency_cases.csv";
-PriorityQueue<EmergencyCase> emergencyQueue(50);
+int QUEUE_SIZE = 50;
+PriorityQueue<EmergencyCase> emergencyQueue(QUEUE_SIZE);
 
 void loadEmergencyCases()
 {
-    emergencyQueue.clear();
     ifstream file(FILE_NAME); // Input file stream, read-only mode
     if (!file.is_open())
     {
@@ -123,7 +123,51 @@ void viewPendingCases()
         cout << "No pending emergency cases." << endl;
         return;
     }
-    emergencyQueue.display();
+
+    EmergencyCase arrayOfEmergCase[QUEUE_SIZE];
+    int elementCount = 0;
+    cout << endl
+         << "Patient Name                                       |  Emergency Type              |  Priority" << endl;
+    for (int i = 0; i <= QUEUE_SIZE; i++)
+    {
+        EmergencyCase emergCase = emergencyQueue.getElementAt(i);
+        if (emergCase.name.empty())
+        {
+            break;
+        }
+        arrayOfEmergCase[elementCount++] = emergCase;
+    }
+
+    for (int i = 0; i < elementCount - 1; i++)
+    {
+        for (int j = 0; j < elementCount - i - 1; j++)
+        {
+            if (arrayOfEmergCase[j].priority < arrayOfEmergCase[j + 1].priority)
+            {
+                EmergencyCase temp = arrayOfEmergCase[j];
+                arrayOfEmergCase[j] = arrayOfEmergCase[j + 1];
+                arrayOfEmergCase[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i; i < elementCount; i++)
+    {
+        EmergencyCase emergCase = arrayOfEmergCase[i];
+        cout << emergCase.name;
+        for (int j = 0; j < 51 - static_cast<int>(emergCase.name.size()); j++)
+        {
+            cout << " ";
+        }
+        cout << "|  " << emergCase.emergType;
+        for (int j = 0; j < 28 - static_cast<int>(emergCase.emergType.size()); j++)
+        {
+            cout << " ";
+        }
+        cout << "|  " << emergCase.priority << endl;
+    }
+
+    cout << endl;
     // Create a temporary copy of the priority queue to display cases without modifying the original
     // PriorityQueue<EmergencyCase> tempQueue = emergencyQueue;
     // cout << "Pending Emergency Cases (Ordered by Priority):" << endl;
@@ -159,7 +203,7 @@ void runEmergencyDepartmentOfficer()
             viewPendingCases();
             break;
         case 4:
-            cout << "Thank you for using this program!" << endl;
+            cout << "Exiting back to User Select Menu." << endl;
             return;
         default:
             cout << "Invalid option. Please try again." << endl;
