@@ -8,12 +8,13 @@
 using namespace std;
 
 void runMedicalSupplyManager();
+void runPatientAdmissionClerk();
 
 int main()
 {
     while(true)
     {
-        cout << "Welcome to sohai jason hospital app!\n1. Patient stuff\n2. Medical Supply Manager\n3. I forgot\n4. Ambulance\n5. Exit\nPlease select an option: ";
+        cout << "Welcome to sohai jason hospital app!\n1. Patient Admission CLerk\n2. Medical Supply Manager\n3. I forgot\n4. Ambulance\n5. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
         if(cin.fail())
@@ -24,7 +25,11 @@ int main()
             continue;
         }
 
-        if(choice == 2)
+        if (choice == 1)
+        {
+            runPatientAdmissionClerk();
+        }
+        else if(choice == 2)
         {
             runMedicalSupplyManager();
         }
