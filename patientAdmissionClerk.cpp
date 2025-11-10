@@ -175,13 +175,22 @@ string getCurrentTime() {
     time_t now = time(0);
     tm* ltm = localtime(&now);
     
+    // Get year, month, day
+    string year = to_string(1900 + ltm->tm_year);
+    string month = to_string(1 + ltm->tm_mon);
+    string day = to_string(ltm->tm_mday);
+    
+    // Get hour and minute
     string hour = to_string(ltm->tm_hour);
     string min = to_string(ltm->tm_min);
     
+    // Add leading zeros if needed
+    if (month.length() == 1) month = "0" + month;
+    if (day.length() == 1) day = "0" + day;
     if (hour.length() == 1) hour = "0" + hour;
     if (min.length() == 1) min = "0" + min;
     
-    return hour + ":" + min;
+    return year + "-" + month + "-" + day + " " + hour + ":" + min;
 }
 
 void admitPatient() {
