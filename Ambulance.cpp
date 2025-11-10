@@ -14,7 +14,7 @@ int getValidatedInput() {
     return choice;
 }
 
-int main() {
+void runAmbulance() {
     AmbulanceDispatcher dispatcher;
     int simulatedHour = 0; 
     int choice = 0;
@@ -66,5 +66,5 @@ int main() {
         }
     }
 
-    return 0;
+    return;
 }

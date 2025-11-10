@@ -137,8 +137,6 @@ class AmbulanceDispatcher {
             rear = firstAmbulance; 
             
             cout << "[Rotation] " << firstAmbulance->carPlate << " has moved to back of the queue." << endl;
-
-            ambulanceNode* newOnDutyA = rear->nextAddress;
         }
 
         void displayAmbulanceSchedule(int time) {

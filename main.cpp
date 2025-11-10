@@ -10,6 +10,7 @@ using namespace std;
 void runMedicalSupplyManager();
 void runPatientAdmissionClerk();
 void runEmergencyDepartmentOfficer();
+void runAmbulance();
 
 int main()
 {
@@ -38,7 +39,7 @@ int main()
             runEmergencyDepartmentOfficer();
             break;
         case 4:
-            cout << "Missing feature..." << endl;
+            runAmbulance();
             break;
         case 5:
             cout << "Thank you for using this program!" << endl;
