@@ -227,7 +227,7 @@ class AmbulanceDispatcher {
             }
 
             if (rotationCount >= maxRotations && size > 1) {
-                cout << endl << "[System] All waiting ambulances have exceeded their shift duration!" << endl;
+                cout << endl << "[System] All waiting ambulances have exceeded their scheduled duty hours!" << endl;
                 cout << "[System] Only " << firstAmbulance->carPlate << " is currently available." << endl;
                 cout << "[System] Reset right now..." << endl;
                 return reset();

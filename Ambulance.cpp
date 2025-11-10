@@ -24,7 +24,7 @@ int main() {
         dispatcher.displayAmbulanceSchedule(simulatedHour);
 
         cout << "- - - - - - - - - MENU - - - - - - - - -" << endl;
-        cout << "1. Rotate 'On Duty A' ambulance" << endl;
+        cout << "1. Rotate [On Duty 1] ambulance" << endl;
         cout << "2. Register new ambulance" << endl;
         cout << "3. Simulate 1 hour" << endl;
         cout << "4. Exit system" << endl;
