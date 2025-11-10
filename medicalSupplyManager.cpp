@@ -116,12 +116,34 @@ void listItems()
 void addItem()
 {
     string inputBuffer[3] = {""};
-    cout << "Enter Item Type: ";
-    cin >> inputBuffer[0];
-    cout << "Enter Quantity: ";
-    cin >> inputBuffer[1];
-    cout << "Enter Batch No.: ";
-    cin >> inputBuffer[2];
+
+    for(int i = 0; i < 3; i++)
+    {
+        while(true)
+        {
+            if(i == 0)
+            {
+                cout << "Enter Item Type: ";
+            }
+            else if(i == 1)
+            {
+                cout << "Enter Quantity: ";
+            }
+            else
+            {
+                cout << "Enter Batch No.: ";
+            }
+            cin >> inputBuffer[i];
+
+            if(inputBuffer[i].find(',') != string::npos)
+            {
+                cout << "You cannot write commas!" << endl;
+                continue;
+            }
+            break;
+        }
+    }
+
 
     listOfSplittedItems.push(inputBuffer[0], inputBuffer[1], inputBuffer[2]);
     ofstream fileContents("items.csv", ios::app); //append mode

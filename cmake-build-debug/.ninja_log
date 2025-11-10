@@ -1,0 +1,10 @@
+# ninja log v6
+11	401	7844831174419726	CMakeFiles/dstr_assignment_pt2.dir/main.cpp.obj	21be7e578abf1270
+2	464	7844831174329726	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+29	496	7844831174599722	CMakeFiles/dstr_assignment_pt2.dir/EmergencyDepartmentOfficer.cpp.obj	754ab547565c0cf2
+21	574	7844831174519725	CMakeFiles/dstr_assignment_pt2.dir/patientAdmissionClerk.cpp.obj	eddd7efea70b7b04
+574	723	7844831180049743	dstr_assignment_pt2.exe	798367a2103a7f61
+5	461	7844831692654572	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+461	604	7844831697215682	dstr_assignment_pt2.exe	798367a2103a7f61
+5	476	7844833011597405	CMakeFiles/dstr_assignment_pt2.dir/medicalSupplyManager.cpp.obj	381f5ac817bf9f09
+477	612	7844833016313118	dstr_assignment_pt2.exe	798367a2103a7f61

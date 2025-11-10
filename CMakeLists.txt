@@ -6,4 +6,9 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(dstr_assignment_pt2
     medicalSupplyManager.cpp
         main.cpp
-        linkedlist.hpp)
+        linkedlist.hpp
+        patientAdmissionClerk.cpp
+        EmergencyDepartmentOfficer.cpp
+        EmergencyDepartmentOfficer.hpp
+        tempCodeRunnerFile.hpp
+        Tp080522-Ambulance.hpp)
