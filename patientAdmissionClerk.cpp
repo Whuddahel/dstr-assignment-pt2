@@ -91,7 +91,7 @@ public:
              << setw(25) << "Name" 
              << setw(20) << "Condition" 
              << "Admission Time" << endl;
-        cout << "----------------------------------------" << endl;
+        cout << "--------------------------------------------" << endl;
 
         PatientQueueNode* current = front;
         int position = 1;
@@ -104,7 +104,7 @@ public:
             current = current->next;
             position++;
         }
-        cout << "========================================\n" << endl;
+        cout << "--------------------------------------------\n" << endl;
     }
 
     void saveToFile(const string& filename) {

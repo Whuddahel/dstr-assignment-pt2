@@ -15,7 +15,7 @@ int main()
 {
     while (true)
     {
-        cout << "Welcome to sohai jason hospital app!\n1. Patient stuff\n2. Medical Supply Manager\n3. Emergency Department Officer\n4. Ambulance\n5. Exit\nPlease select an option: ";
+        cout << "Welcome to sohai jason hospital app!\n1. Patient Admission Clerk\n2. Medical Supply Manager\n3. Emergency Department Officer\n4. Ambulance\n5. Exit\nPlease select an option: ";
         int choice;
         cin >> choice;
         if (cin.fail())
@@ -29,7 +29,7 @@ int main()
         switch (choice)
         {
         case 1:
-            cout << "Missing feature..." << endl;
+            runPatientAdmissionClerk();
             break;
         case 2:
             runMedicalSupplyManager();
