@@ -185,9 +185,9 @@ string getCurrentTime() {
 }
 
 void admitPatient() {
-    cout << "\n========================================" << endl;
+    cout << "\n----------------------------------------" << endl;
     cout << "         ADMIT NEW PATIENT" << endl;
-    cout << "========================================" << endl;
+    cout << "----------------------------------------" << endl;
 
     Patient newPatient;
     newPatient.patientID = generatePatientID();
